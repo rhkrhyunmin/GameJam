@@ -10,7 +10,7 @@ public class PlayerMoveSkill : MonoBehaviour
 
     public float currentStamina; // 현재 스테미나
 
-
+    public Player player;
     void Start()
     {
         currentStamina = maxStamina; // 초기 스테미나 설정

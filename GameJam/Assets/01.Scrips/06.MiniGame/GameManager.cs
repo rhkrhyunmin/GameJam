@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public bool isDashing = false;
 
+    public int Score;
+
     // 게임 매니저의 인스턴스에 접근할 수 있는 프로퍼티
     public static GameManager Instance
     {

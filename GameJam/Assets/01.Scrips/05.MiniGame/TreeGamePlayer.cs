@@ -96,11 +96,13 @@ public class TreeGamePlayer : MonoBehaviour
             {
                 textMeshProUGUI.text = "참 잘했어요.";
                 Invoke("LoadGreatJobScene", 2);
+                GameManager.Instance.Score += 2;
             }
             else if (elapsedTime <= 24)
             {
                 textMeshProUGUI.text = "통과";
                 Invoke("LoadPassScene", 2);
+                GameManager.Instance.Score++;
             }
             else
             {

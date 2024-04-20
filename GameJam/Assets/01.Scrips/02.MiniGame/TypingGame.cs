@@ -75,17 +75,19 @@ public class TypingGame : MonoBehaviour
             float elapsedTime = Time.time - startTime;
             if (currentIndex == selectedWords.Count)
             {
-                if (elapsedTime <= 10)
+                if (elapsedTime <= 25)
                 {
                     endingTXT.gameObject.SetActive(true);
                     endingTXT.text = "참 잘했어요!";
                     Invoke("LoadGreatJobScene", 2f);
+                    GameManager.Instance.Score += 2;
                 }
-                else if (elapsedTime <= 17)
+                else if (elapsedTime <= 45)
                 {
                     endingTXT.gameObject.SetActive(true);
                     endingTXT.text = "통과";
                     Invoke("LoadPassScene", 2f);
+                    GameManager.Instance.Score++;
                 }
                 else
                 {
@@ -93,11 +95,6 @@ public class TypingGame : MonoBehaviour
                     endingTXT.text = "재수강";
                     Invoke("LoadRetakeScene", 2f);
                 }
-            }
-            else if (elapsedTime > 17) // 만약 시간이 17초를 초과하고 모든 단어를 맞추지 않았다면
-            {
-                SceneManager.LoadScene("재수강");
-                Invoke("LoadRetakeScene", 2f);
             }
         }
         else

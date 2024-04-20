@@ -52,17 +52,19 @@ public class PickApple : MonoBehaviour
                     if (appleClickCount >= totalApples)
                     {
                         float elapsedTime = Time.time - startTime;
-                        if (elapsedTime <= 3)
+                        if (elapsedTime <= 5)
                         {
                             resultText.text = "참 잘했어요."; // TMP_Text에 텍스트 설정
                             Invoke("LoadGreatJobScene", 2f); // 2초 후에 GreatJobScene 로드
                             resultText.gameObject.SetActive(true);
+                            GameManager.Instance.Score += 2;
                         }
-                        else if (elapsedTime <= 5)
+                        else if (elapsedTime <= 10)
                         {
                             resultText.text = "통과"; // TMP_Text에 텍스트 설정
                             Invoke("LoadPassScene", 2f); // 2초 후에 PassScene 로드
                             resultText.gameObject.SetActive(true);
+                            GameManager.Instance.Score++;
                         }
                         else
                         {

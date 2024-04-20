@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private bool isOb = false;
 
-    public TextMeshPro UITextMeshPro;
+    //public TextMeshPro UITextMeshPro;
     public GameObject Dash;
 
     //public Camera mainCamera; // 메인 카메라 (주석 처리하여 카메라를 사용하지 않음)
@@ -62,7 +62,9 @@ public class Player : MonoBehaviour
 
         if (survivalTime >= 100f)
         {
-            StartCoroutine(LoadNextScene(1));
+            GameManager.Instance.Score++;
+            SceneManager.LoadScene(5);
+            //StartCoroutine(LoadNextScene(1));
         }
     }
 
@@ -76,11 +78,13 @@ public class Player : MonoBehaviour
                 isOb = true;
                 rb.velocity = Vector2.zero;
                 StartCoroutine(RestartScene(2));
+                Dash.SetActive(false);
+                GameManager.Instance.isDashing = false;
 
             }
             else
             {
-                
+                Dash.SetActive(true);
             }   
         }
     }

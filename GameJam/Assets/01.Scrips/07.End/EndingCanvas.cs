@@ -5,8 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class EndingCanvas : MonoBehaviour
 {
-    [SerializeField] GameObject F1, F2, B1, B2, A1, A2; 
+    [SerializeField] GameObject F1, F2, B1, B2, A1, A2;
 
+    private void Start()
+    {
+        if(GameManager.Instance.Score >= 7)
+        {
+            YouA();
+        }
+        if(GameManager.Instance.Score >= 5)
+        {
+            YouB();
+        }
+        if( GameManager.Instance.Score < 5)
+        {
+            YouF();
+        }
+    }
     public void YouF()
     {
         F1.SetActive(true);
@@ -27,7 +42,7 @@ public class EndingCanvas : MonoBehaviour
 
     public void RestartButton()
     {
-
+        GameManager.Instance.Score = 0;
         SceneManager.LoadScene("01.ApplePickScene");
     }
 

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/04.DateScene.unity
     guid: a302aefd820cc0345bed47cf76062e06
+  - enabled: 1
+    path: Assets/00.Scenes/End.unity
+    guid: 939ddf5f7fed34e4d8b9d4f992b2541e
   m_configObjects: {}

@@ -1,4 +1,8 @@
 using UnityEngine;
+using TMPro;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -9,7 +13,10 @@ public class Player : MonoBehaviour
     private float sprintTimer = 0f; // 순간 돌진 지속 타이머
     public KeyCode sprintKey = KeyCode.Space; // 돌진 키
 
-    public Camera mainCamera; // 메인 카메라
+    public TextMeshPro UITextMeshPro;
+    public PlayerMoveSkill playerMoveSkill;
+
+    //public Camera mainCamera; // 메인 카메라 (주석 처리하여 카메라를 사용하지 않음)
 
     void Start()
     {
@@ -18,19 +25,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        float moveSpeed = Input.GetKey(sprintKey) ? sprintSidewaysSpeed : normalSidewaysSpeed;
 
         // 플레이어를 오른쪽으로 이동
-        Vector2 rightMovement = transform.right * moveSpeed * Time.deltaTime;
+        Vector2 rightMovement = transform.right * 5;
         // Rigidbody에 속도를 적용하여 이동
         rb.velocity = rightMovement;
-
-        Debug.Log(rb.velocity);
-
-        // 카메라 이동
-        Vector3 cameraPos = mainCamera.transform.position;
-        cameraPos.x = Mathf.Max(transform.position.x, 0); // 플레이어의 x 위치를 카메라의 x 위치로 설정, 최소값은 0
-        mainCamera.transform.position = cameraPos;
 
         // 순간 돌진 타이머 감소
         if (Input.GetKeyDown(sprintKey))
@@ -43,4 +42,28 @@ public class Player : MonoBehaviour
             sprintTimer -= Time.deltaTime;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Obstacle"))
+        {
+            if(playerMoveSkill.isDashing == false)
+            {
+                UITextMeshPro.gameObject.SetActive(true);
+                StartCoroutine(RestartScene(2));
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+
+            }   
+        }
+    }
+
+    IEnumerator RestartScene(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(5);
+    }
 }
+

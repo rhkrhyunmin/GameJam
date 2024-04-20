@@ -4,49 +4,30 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public GameObject[] obstacleList;
-    public float rotationSpeed = 100f; // 회전 속도
-    public float flySpeed = 5f; // 날아가는 속도
-    public float disappearDelay = 2f; // 사라지는 딜레이 (초)
+    public int obstacleCount = 30; // 생성할 장애물 개수
 
-    private bool hasCollided = false;
-
-    private void Start()
+    void Start()
     {
-        // X값만 랜덤으로 설정
-        transform.position = new Vector2(Random.Range(-8f, 8f), transform.position.y);
-        Vector2 spawnPosition = new Vector2(Random.Range(-8f, 8f), 1);
-                                                
-        GameObject obstaclePrefab = obstacleList[Random.Range(0, obstacleList.Length)];
-        Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
+        SpawnObstacles(obstacleCount);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void SpawnObstacles(int count)
     {
-        if (other.CompareTag("Player") && !hasCollided)
+        for (int i = 0; i < count; i++)
         {
-            hasCollided = true;
-            StartCoroutine(FlyAwayAndDisappear());
+            float randomX = Random.Range(9f, 70f);
+            Vector2 spawnPosition = new Vector2(randomX, 0f); // y값을 0으로 설정
+
+            int obstacleIndex = Random.Range(0, obstacleList.Length);
+            if (obstacleList[obstacleIndex] != null)
+            {
+                GameObject obstaclePrefab = obstacleList[obstacleIndex];
+                Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogError($"장애물 리스트에 인덱스 {obstacleIndex}에 해당하는 오브젝트가 없습니다.");
+            }
         }
-    }
-
-    IEnumerator FlyAwayAndDisappear()
-    {
-        // 회전하면서 위쪽 왼쪽 대각선으로 날아가기
-        Vector2 flyDirection = (Vector2.up + Vector2.left).normalized;
-        while (true)
-        {
-            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-            transform.Translate(flyDirection * flySpeed * Time.deltaTime);
-
-            StartCoroutine(DisappearAfterDelay());
-
-            yield return null;
-        }
-    }
-
-    IEnumerator DisappearAfterDelay()
-    {
-        yield return new WaitForSeconds(disappearDelay);
-        Destroy(gameObject);
     }
 }

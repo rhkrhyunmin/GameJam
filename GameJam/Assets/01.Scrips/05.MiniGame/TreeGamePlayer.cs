@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class TreeGamePlayer : MonoBehaviour
 {
@@ -17,12 +19,17 @@ public class TreeGamePlayer : MonoBehaviour
     private float jumpStartTime; // Space 키를 누른 시간
     private bool isJump = false;
 
+    public TextMeshProUGUI textMeshProUGUI;
+    private float startTime;
     Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        textMeshProUGUI.gameObject.SetActive(false);
+        startTime = Time.time;
     }
 
     void Update()
@@ -83,7 +90,38 @@ public class TreeGamePlayer : MonoBehaviour
 
         if (collision.gameObject.CompareTag("balloon"))
         {
+            float elapsedTime = Time.time - startTime;
             SceneManager.LoadScene(4);
+            if (elapsedTime <= 18)
+            {
+                textMeshProUGUI.text = "참 잘했어요.";
+                Invoke("LoadGreatJobScene", 2);
+            }
+            else if (elapsedTime <= 24)
+            {
+                textMeshProUGUI.text = "통과";
+                Invoke("LoadPassScene", 2);
+            }
+            else
+            {
+                textMeshProUGUI.text = "재수강";
+                Invoke("LoadRetakeScene", 2);
+            }
         }
+    }
+
+    void LoadGreatJobScene()
+    {
+        SceneManager.LoadScene("04.DateScene");
+    }
+
+    void LoadPassScene()
+    {
+        SceneManager.LoadScene("04.DateScene");
+    }
+
+    void LoadRetakeScene()
+    {
+        SceneManager.LoadScene("03.TreeClimbScene");
     }
 }

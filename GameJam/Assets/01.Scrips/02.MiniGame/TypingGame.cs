@@ -15,6 +15,8 @@ public class TypingGame : MonoBehaviour
 
     private List<string> selectedWords = new List<string>();
     private int currentIndex = 0;
+    private float startTime;
+    public TextMeshProUGUI endingTXT;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class TypingGame : MonoBehaviour
 
         // 가져온 단어 리스트를 출력하여 확인
         UpdateSelectedWordsText();
+
+        endingTXT.gameObject.SetActive(false);
     }
 
     void UpdateSelectedWordsText()
@@ -68,10 +72,32 @@ public class TypingGame : MonoBehaviour
             _objectManager.MoveToNextObject();
 
             // 모든 단어를 맞췄을 때
+            float elapsedTime = Time.time - startTime;
             if (currentIndex == selectedWords.Count)
             {
-                Debug.Log("All words matched!");
-                SceneManager.LoadScene(3);
+                if (elapsedTime <= 10)
+                {
+                    endingTXT.gameObject.SetActive(true);
+                    endingTXT.text = "참 잘했어요!";
+                    Invoke("LoadGreatJobScene", 2f);
+                }
+                else if (elapsedTime <= 17)
+                {
+                    endingTXT.gameObject.SetActive(true);
+                    endingTXT.text = "통과";
+                    Invoke("LoadPassScene", 2f);
+                }
+                else
+                {
+                    endingTXT.gameObject.SetActive(true);
+                    endingTXT.text = "재수강";
+                    Invoke("LoadRetakeScene", 2f);
+                }
+            }
+            else if (elapsedTime > 17) // 만약 시간이 17초를 초과하고 모든 단어를 맞추지 않았다면
+            {
+                SceneManager.LoadScene("재수강");
+                Invoke("LoadRetakeScene", 2f);
             }
         }
         else
@@ -80,5 +106,20 @@ public class TypingGame : MonoBehaviour
             // 현재 비교한 단어의 인덱스를 표시
             Debug.Log("Current Index: " + currentIndex);
         }
+    }
+
+    void LoadGreatJobScene()
+    {
+        SceneManager.LoadScene("03.TreeClimbScene");
+    }
+
+    void LoadPassScene()
+    {
+        SceneManager.LoadScene("03.TreeClimbScene");
+    }
+
+    void LoadRetakeScene()
+    {
+        SceneManager.LoadScene("02.TypeingTestScene");
     }
 }

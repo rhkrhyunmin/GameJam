@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-
+                //Destroy
             }   
         }
     }

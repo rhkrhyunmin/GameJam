@@ -11,6 +11,7 @@ public class TypingGame : MonoBehaviour
     public EnglishWord englishWord;
     public TMP_InputField inputField;
     public TextMeshProUGUI[] selectedWordsTexts; // 각각의 단어를 나타낼 UI Text 배열
+    public ObjectManager _objectManager;
 
     private List<string> selectedWords = new List<string>();
     private int currentIndex = 0;
@@ -64,6 +65,7 @@ public class TypingGame : MonoBehaviour
 
             // 선택된 단어들을 다시 표시
             UpdateSelectedWordsText();
+            _objectManager.MoveToNextObject();
 
             // 모든 단어를 맞췄을 때
             if (currentIndex == selectedWords.Count)

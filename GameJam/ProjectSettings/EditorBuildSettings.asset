@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/00.Scenes/ApplePickScene.unity
+    guid: fd447a694753d89488739ee2977fa82d
+  - enabled: 1
+    path: Assets/00.Scenes/TypeingTestScene.unity
+    guid: 91ec6358b53c4534296f6d2c0f4a17f0
   m_configObjects: {}

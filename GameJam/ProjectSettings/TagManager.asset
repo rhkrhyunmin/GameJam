@@ -7,6 +7,8 @@ TagManager:
   - Apple
   - Ground
   - TrashBin
+  - Trash
+  - Wall
   layers:
   - Default
   - TransparentFX

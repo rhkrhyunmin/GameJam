@@ -51,7 +51,7 @@ public class Recycling : MonoBehaviour
         Trash trashScript = trash.GetComponent<Trash>();
 
         // 쓰레기의 무게를 설정
-        int randomWeight = Random.Range(1, 10); // 원하는 범위의 무게를 설정할 수 있습니다.
+        int randomWeight = Random.Range(4, 6); // 원하는 범위의 무게를 설정할 수 있습니다.
         trashScript.weight = randomWeight;
 
         Rigidbody2D rb = trash.GetComponent<Rigidbody2D>();

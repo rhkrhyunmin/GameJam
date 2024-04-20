@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Apple
+  - Ground
+  - TrashBin
   layers:
   - Default
   - TransparentFX

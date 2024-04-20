@@ -9,7 +9,7 @@ public class PlayerMoveSkill : MonoBehaviour
     public float staminaRegenRate = 1f; // 스테미나 재생 속도
 
     public float currentStamina; // 현재 스테미나
-    public bool isDashing = false; // 대쉬 중인지 여부
+
 
     void Start()
     {
@@ -18,24 +18,24 @@ public class PlayerMoveSkill : MonoBehaviour
 
     void Update()
     {
-        if (!isDashing && Input.GetKeyDown(KeyCode.Space) && currentStamina >= dashStaminaCost)
+        if (!GameManager.Instance.isDashing && Input.GetKeyDown(KeyCode.Space) && currentStamina >= dashStaminaCost)
         {
             StartDash();
             StartCoroutine(SkillDash(1f));
         }
 
         // 스테미나 회복
-        if (!isDashing && currentStamina < maxStamina)
+        if (!GameManager.Instance.isDashing && currentStamina < maxStamina)
         {
             currentStamina += staminaRegenRate * Time.deltaTime;
             currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
-            Debug.Log(isDashing);
+            
         }
     }
 
     IEnumerator SkillDash(float duringTime)
     {
-        isDashing = true;
+        GameManager.Instance.isDashing = true;
         yield return new WaitForSeconds(duringTime);
         EndDash(); 
     }
@@ -46,12 +46,15 @@ public class PlayerMoveSkill : MonoBehaviour
         // 대쉬 실행
         
         currentStamina -= dashStaminaCost;
+        GameManager.Instance.isDashing = true;
+        Debug.Log("1");
+
     }
 
     void EndDash()
     {
         // 대쉬 종료
-        isDashing = false;
+        GameManager.Instance.isDashing = false;
         // 대쉬 종료 후 처리할 코드 작성
     }
 }

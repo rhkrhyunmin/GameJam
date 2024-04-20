@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            float randomX = Random.Range(9f, 70f);
+            float randomX = Random.Range(9f, 200f);
             Vector2 spawnPosition = new Vector2(randomX, 0f); // y값을 0으로 설정
 
             int obstacleIndex = Random.Range(0, obstacleList.Length);

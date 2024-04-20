@@ -576,6 +576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486906872}
   - component: {fileID: 486906871}
+  - component: {fileID: 486906873}
   m_Layer: 0
   m_Name: RunSceneAieln
   m_TagString: Untagged
@@ -644,12 +645,27 @@ Transform:
   m_GameObject: {fileID: 486906870}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6, y: 0, z: 0}
+  m_LocalPosition: {x: -7.33, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &486906873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486906870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3ce897ad1f8ca48be4e7cb2b6dd38a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1923439346}
+  distanceAhead: 2
+  followSpeed: 8
 --- !u!1 &498468091
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +912,8 @@ MonoBehaviour:
   obstacleList:
   - {fileID: 9063287990001801130, guid: d9831837071ee8547a8b7956d8f27541, type: 3}
   - {fileID: 484671482220438791, guid: 6070b0659f273764e8e2ade7cdad76f4, type: 3}
-  obstacleCount: 10
+  - {fileID: 3176084489763708116, guid: 3d1191a11704f764bb26bd05a51864e8, type: 3}
+  obstacleCount: 30
 --- !u!4 &539633907
 Transform:
   m_ObjectHideFlags: 0
@@ -2360,6 +2377,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1738629395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738629397}
+  - component: {fileID: 1738629396}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1738629396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738629395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e42049819d28434bb0d7788bfdaa0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDashing: 0
+--- !u!4 &1738629397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738629395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752781498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2517,7 @@ GameObject:
   - component: {fileID: 1783820996}
   - component: {fileID: 1783820997}
   - component: {fileID: 1783820998}
+  - component: {fileID: 1783820999}
   m_Layer: 0
   m_Name: RunDashEffect
   m_TagString: Untagged
@@ -2471,7 +2534,7 @@ Transform:
   m_GameObject: {fileID: 1783820995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.46, y: -3.24, z: 0}
+  m_LocalPosition: {x: -7.16, y: -3.24, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2550,6 +2613,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1783820999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783820995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccbd0ea531bceb47a4483895002b73b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1923439346}
+  distanceAhead: 2
+  offsetX: 1
 --- !u!1 &1843871845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,7 +2786,7 @@ Transform:
   m_GameObject: {fileID: 1923439344}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.3, y: -3.24, z: 0}
+  m_LocalPosition: {x: -7.6, y: -3.24, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2726,10 +2804,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b701aadb4fe45f44093dfd65d74f9c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSidewaysSpeed: 5
-  sprintSidewaysSpeed: 20
   sprintDuration: 1
   sprintKey: 32
+  UITextMeshPro: {fileID: 0}
+  Dash: {fileID: 1783820995}
 --- !u!70 &1923439348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3113,3 +3191,4 @@ SceneRoots:
   - {fileID: 539633907}
   - {fileID: 1965953359}
   - {fileID: 240637046}
+  - {fileID: 1738629397}

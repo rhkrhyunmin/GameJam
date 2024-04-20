@@ -10,6 +10,7 @@ TagManager:
   - Trash
   - Wall
   - balloon
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0d459cfa1d80c85458121919d0323fb1
+guid: 85999d3d4eb1d8d4b898c7bd9ac68009
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ailen-Sheet_0
+      name: CuteGuy-S_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a67ee99276055741a9a7e9fa3680af8
-      internalID: -2063860363
+      spriteID: b1d004c643d5a8747bd920e7247fb7bc
+      internalID: -276746310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ailen-Sheet_1
+      name: CuteGuy-S_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fc4ad0e88d8f2841bab6f903a3b48be
-      internalID: 1885923186
+      spriteID: ec8a869defcc0544daf8caa5d8107268
+      internalID: -1640103796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ailen-Sheet_2
+      name: CuteGuy-S_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8daff1c1fdabe5645a2a3282573c3ec5
-      internalID: -1198029636
+      spriteID: e2873f644668c1e45a90b57bea5cba34
+      internalID: -1272569267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ailen-Sheet_3
+      name: CuteGuy-S_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a848cd89168a7d6448c6e20a71e49729
-      internalID: -1679619577
+      spriteID: f804c8938a91e89418bedf932550e804
+      internalID: -359321148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ailen-Sheet_4
+      name: CuteGuy-S_4
       rect:
         serializedVersion: 2
         x: 128
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29e0fdc371d5fd348a198d9608f1bcf1
-      internalID: 752484419
+      spriteID: 950949e627a0d964cac711bab71d35a1
+      internalID: 796602624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ailen-Sheet_5
+      name: CuteGuy-S_5
       rect:
         serializedVersion: 2
         x: 160
@@ -242,8 +242,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82f9f115690cfa7498a19777d6e7be66
-      internalID: -380769728
+      spriteID: bad55d66e24028d469993204ad352b97
+      internalID: 66524165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CuteGuy-S_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df0162417481244e9781a342fc2af74
+      internalID: -648115541
       vertices: []
       indices: 
       edges: []
@@ -252,19 +273,20 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ailen-Sheet_0: -2063860363
-      Ailen-Sheet_1: 1885923186
-      Ailen-Sheet_2: -1198029636
-      Ailen-Sheet_3: -1679619577
-      Ailen-Sheet_4: 752484419
-      Ailen-Sheet_5: -380769728
+      CuteGuy-S_0: -276746310
+      CuteGuy-S_1: -1640103796
+      CuteGuy-S_2: -1272569267
+      CuteGuy-S_3: -359321148
+      CuteGuy-S_4: 796602624
+      CuteGuy-S_5: 66524165
+      CuteGuy-S_6: -648115541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

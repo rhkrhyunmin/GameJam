@@ -9,6 +9,7 @@ TagManager:
   - TrashBin
   - Trash
   - Wall
+  - balloon
   layers:
   - Default
   - TransparentFX

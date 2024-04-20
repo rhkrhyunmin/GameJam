@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TreeGamePlayer : MonoBehaviour
 {
@@ -9,14 +10,19 @@ public class TreeGamePlayer : MonoBehaviour
     public float minJumpForce = 5f; // 최소 점프 힘
     public float maxHoldTime = 1f; // Space 키를 최대로 누르는 시간
     public KeyCode jumpKey = KeyCode.Space; // 점프 키
+    public Camera mainCamera; // 메인 카메라
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private float jumpStartTime; // Space 키를 누른 시간
+    private bool isJump = false;
+
+    Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -48,12 +54,24 @@ public class TreeGamePlayer : MonoBehaviour
             float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, Mathf.Clamp01(holdTime / maxHoldTime));
             Jump(jumpForce); // 계산된 점프 힘으로 점프
         }
+
+        // 카메라 이동
+        Vector3 cameraPos = mainCamera.transform.position;
+        cameraPos.y = Mathf.Max(transform.position.y, 0); // 플레이어의 y 위치를 카메라의 y 위치로 설정, 최소값은 0
+        mainCamera.transform.position = cameraPos;
+
+        // 점프 중인지 확인하고 애니메이션을 설정
+        animator.SetBool("IsJump", !isGrounded);
+
+        // run 애니메이션 설정
+        animator.SetBool("IsRun", Mathf.Abs(moveInput) > 0f);
     }
 
     void Jump(float jumpForce)
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         isGrounded = false; // 점프 시에는 공중에 있으므로 isGrounded를 false로 설정
+        animator.SetBool("IsJump", true);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -61,6 +79,11 @@ public class TreeGamePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+
+        if (collision.gameObject.CompareTag("balloon"))
+        {
+            SceneManager.LoadScene(4);
         }
     }
 }
